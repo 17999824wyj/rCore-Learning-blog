@@ -56,7 +56,7 @@ tags:
 #### 问题描述
 在primitive_types2.rs中，注释要求尝试传入unicode字符，来理解rust中的char。  
 但是，我通过`https://emojidb.org/rust-emojis`这个[emojis网址](https://emojidb.org/rust-emojis)，拿到了一个emoji：☢️，进行测试，却直接编译出错：  
-{% asset_img unicode错误1.png unicode编译出错 %}
+![unicode错误1](./abcd1234-rust-os/unicode错误1.png)
 #### 出错代码
 ```rust
 // primitive_types2.rs
@@ -105,8 +105,8 @@ fn main() {
 我们通过搜集资料、询问ai等方式，得到：
 > UTF-16码点在0xD800到0xDFFF的范围内  
 > UTF-8码点在0x80到0x10FFFF的范围内  
-> 如图{% asset_img unicode错误2.png 询问chat-1 %}  
-> 如图{% asset_img unicode错误3.png 询问chat-2 %}
+> 如图![询问chat-1](./abcd1234-rust-os/unicode错误2.png)  
+> 如图![询问chat-2](./abcd1234-rust-os/unicode错误3.png)
 
 我们的总结是：UTF-8是8位的，其由一个字节进行表示，而UTF-16是16位的，其由两个字节进行表示，很可能是因为“☢️”是UTF-16编码，导致其无法被解析成rust里的“字符`char`”。
 
@@ -114,6 +114,7 @@ fn main() {
 #### 问题描述
 在编程的过程中，我意外发现，在if语句内，通过不写分号的方式进行返回，会产生问题，程序无法编译，见下图：  
 {% asset_img if错误1.png if条件编译出错 %}
+![if错误](./abcd1234-rust-os/if错误1.png)
 
 #### 出错代码
 ```rust
@@ -219,7 +220,7 @@ mod tests {
 
 #### 问题分析
 在遇到这个问题之后，我自己分析不出来为什么会出现这样的错误。于是，我去找队伍里的学长进行咨询。学长在他的教程书里找到了答案。出现这个问题的原因是，rust的但if语句的返回值必然是返回单元`()`，因此，我不使用return返回true时，破坏了if语句的语法规则，导致出错。具体教程如下：  
-{% asset_img if错误2.jpg if条件编译出错-解决 %}
+![if条件编译出错-解决](./abcd1234-rust-os/if错误2.jpg)
 
 ## 额外练习
 在第一阶段中，我在我们专业的操作系统实验课程中，使用rust编程，完成了实验内容，具体完成了：
